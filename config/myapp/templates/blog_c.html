@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log in & Sign up</title>
+
+    <!-- login font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .main {
+            height: 50%;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            display: inline-block;
+            border: black solid 3px;
+            color: black;
+            font-family: 'Poor Story', cursive;
+            font-size: larger;
+        }
+
+        .in {
+            font-family: 'Poor Story', cursive;
+        }
+
+        .login_but {
+            background-color: white;
+            height: 40px;
+            width: 80px;
+            border: white solid 0px;
+            font-family: 'Poor Story', cursive;
+            font-size: medium;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <br><br><br><br>
+        <fieldset class="main">
+            <legend style="font-size: larger;"> Sign Up </legend>
+
+            <div class="in">
+
+                {{ error }}
+                <form action='{% url "blog_c" %}' method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p>제목</p>
+                    <textarea name = 'title' style = 'width: 600px; height: 25px;'></textarea>
+                    <p>내용</p>
+                    <textarea name = 'contents' style = 'width: 600px; height: 250px;'></textarea>
+                    <div style="text-align: center;">
+                        <br>
+                        <button type= 'submit'>업로드</button>
+                        <p style = 'color : red; font-size: 10px;'>{{ done }}</p>
+                    </div>
+                    <div class="btn">                    
+                        <a class="login_btn" href="{% url 'blog' %}">My blog</a>
+                    </div>
+                </form>
+            </div>
+
+        </fieldset>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log in & Sign up</title>
+
+    <!-- login font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .main {
+            height: 50%;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            display: inline-block;
+            border: black solid 3px;
+            color: black;
+            font-family: 'Poor Story', cursive;
+            font-size: larger;
+        }
+
+        .in {
+            font-family: 'Poor Story', cursive;
+        }
+
+        .login_but {
+            background-color: white;
+            height: 40px;
+            width: 80px;
+            border: white solid 0px;
+            font-family: 'Poor Story', cursive;
+            font-size: medium;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <br><br><br><br>
+        <br><br><br><br>
+        <fieldset class="main">
+            <legend style="font-size: larger;"> Welcome </legend>
+
+            <div class="in">
+
+                <h1>{{ request.user.greet }}</h1>
+                <br>
+                <div class="btn">
+                    <a class="login_btn" href="{% url 'logout' %}">LOGOUT</a>
+                    |
+                    <a class="login_btn" href="{% url 'blog' %}">MY BLOG</a>
+                </div>
+                <br>
+
+            </div>
+
+        </fieldset>
+    </div>
+</body>
+
+</html>
+
+{% else %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log in & Sign up</title>
+
+    <!-- login font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .main {
+            height: 50%;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            display: inline-block;
+            border: black solid 3px;
+            color: black;
+            font-family: 'Poor Story', cursive;
+            font-size: larger;
+        }
+
+        .in {
+            font-family: 'Poor Story', cursive;
+        }
+
+        .login_but {
+            background-color: white;
+            height: 17px;
+            width: 45px;
+            border: white solid 0px;
+            font-family: 'Poor Story', cursive;
+            font-size: medium;
+            text-align: center;
+            float: left;
+        }
+
+        .signup {
+            text-decoration: none;
+            font-size: medium;
+            float: right;
+            margin-top: 2px;
+            width: 70px;
+        }
+
+        .btn {
+            width: 150px;
+            height: 50px;
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <br><br><br><br>
+        <br><br><br><br>
+        <fieldset class="main">
+            <legend style="font-size: larger;"> Login </legend>
+
+            <div class="in">
+                <form action="." method="post">
+                    {% csrf_token %}
+                    {{ error }}
+                    <br>
+                    <input type="text" id="username" name="username" placeholder="ID" style='margin-bottom: 10px;'>
+                    <br><br>
+                    <input type="password" id="passwd" name="passwd" placeholder="PASSWORD">
+                    <br><br>
+                    <div class="btn">
+                        <button class='login_but' type="submit">LOGIN</button> <a class='signup'
+                            href='{% url "signup" %}'>SIGN UP</a>
+                        <br>
+                    </div>
+                </form>
+
+            </div>
+
+        </fieldset>
+    </div>
+</body>
+
+</html>
+{% endif %}

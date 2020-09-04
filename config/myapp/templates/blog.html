@@ -1,0 +1,96 @@
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log in & Sign up</title>
+
+    <!-- login font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .main {
+            height: 50%;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            display: inline-block;
+            border: black solid 3px;
+            color: black;
+            font-family: 'Poor Story', cursive;
+            font-size: larger;
+        }
+
+        .in {
+            font-family: 'Poor Story', cursive;
+        }
+
+        .login_but {
+            background-color: white;
+            height: 40px;
+            width: 80px;
+            border: white solid 0px;
+            font-family: 'Poor Story', cursive;
+            font-size: medium;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <br><br><br><br>
+        <br><br><br><br>
+        <fieldset class="main">
+            <legend style="font-size: larger;"> My Blog </legend>
+            
+            {% for blog in blog %}
+            <div class="in">
+
+                <h1>{{ blog.title }}</h1>
+                <p>작성자 : {{ blog.user }}</p>
+                <strong>{{ blog.contents }}</strong>
+                <br>
+                <div class="btn">                    
+                    <form action="{% url 'blog_u' blog.pk %}">
+                        <button type="submit">수정</button>
+                    </form>
+                    
+                    <form action="{% url 'blog_d' %}">
+                        <input id='blog_id' name='blog_id' type='hidden' value="{{ blog.id }}">
+                        <button type="submit">삭제</button>
+                    </form>
+                </div>
+                <hr>
+                <br>
+
+            </div>
+            {% endfor %}
+            
+            <br>
+                <div class="btn">                    
+                    <a class="login_btn" href="{% url 'blog_c' %}">작성</a>
+                </div>
+
+
+        </fieldset>
+    </div>
+    
+</body>
+
+</html>
+{% endif %}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Log in & Sign up</title>
+
+    <!-- login font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .main {
+            height: 50%;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            display: inline-block;
+            border: black solid 3px;
+            color: black;
+            font-family: 'Poor Story', cursive;
+            font-size: larger;
+        }
+
+        .in {
+            font-family: 'Poor Story', cursive;
+        }
+
+        .login_but {
+            background-color: white;
+            height: 40px;
+            width: 80px;
+            border: white solid 0px;
+            font-family: 'Poor Story', cursive;
+            font-size: medium;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <br><br><br><br>
+        <fieldset class="main">
+            <legend style="font-size: larger;"> Sign Up </legend>
+
+            <div class="in">
+
+                {{ error }}
+                <form action='{% url "signup" %}' method="post">
+                    {% csrf_token %}
+                    <br>
+                    <input type="text" id="username" name="username" placeholder="ID" style='margin-bottom: 10px;'>
+                    <br><br>
+                    <input type="password" id="passwd1" name="passwd1" placeholder="PASSWORD"
+                        style='margin-bottom: 10px;'>
+                    <br><br>
+                    <input type="password" id="passwd2" name="passwd2" placeholder="CONFIRM PASSWORD"
+                        style='margin-bottom: 10px;'>
+                    <br><br>
+                    <input type="text" id="name" name="name" placeholder="NAME" style='margin-bottom: 10px;'>
+                    <br><br>
+                    <button class='login_but' type="submit">Sign Up</button>
+                    <br><br>
+                </form>
+            </div>
+
+        </fieldset>
+    </div>
+</body>
+
+</html>
